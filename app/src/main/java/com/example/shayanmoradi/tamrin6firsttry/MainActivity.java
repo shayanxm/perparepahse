@@ -1,13 +1,18 @@
 package com.example.shayanmoradi.tamrin6firsttry;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends SingleFragment {
+    private static final String EXTRA_CRIME_ID = "com.example.amin.criminalintent.crime_id";
+
+//    public static Intent newIntent(Context context, UUID crimeId) {
+//        Intent intent = new Intent(context, CrimeDetailActivity.class);
+//        intent.putExtra(EXTRA_CRIME_ID, crimeId);
+//        return intent;
+//    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.FragmentContainer);
+    public Fragment createFragment() {
+        return null;
     }
 }
