@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/fragment_container_id"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainView.MainActivity">
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"

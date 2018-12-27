@@ -16,6 +16,7 @@ public class TaskManager {
             task.setTitle("task#" + i);
             task.setmDoneOrUnDone(i % 2 == 0);
             task.setmDescription("des" + i);
+
             mTAskMap.put(task.getmTaskId(), task);
         }
 
