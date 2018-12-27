@@ -10,7 +10,7 @@ public abstract Fragment createFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.FragmentContainer);
+        setContentView(R.layout.fragment_container);
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (fragmentManager.findFragmentById(R.id.fragment_container_id)==null){
             fragmentManager.beginTransaction()
