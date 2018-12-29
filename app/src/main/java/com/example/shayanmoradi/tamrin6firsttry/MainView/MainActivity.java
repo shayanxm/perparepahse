@@ -4,15 +4,15 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 
 import com.example.shayanmoradi.tamrin6firsttry.R;
-import com.example.shayanmoradi.tamrin6firsttry.SingleFragment;
 
 public class MainActivity extends SingleFragment {
     private static final String EXTRA_CRIME_ID = "com.example.amin.criminalintent.crime_id";
     private TabAdapter adapter;
     private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private  ViewPager viewPager;
 
 
 //    public static Intent newIntent(Context context, UUID crimeId) {
@@ -35,11 +35,27 @@ public class MainActivity extends SingleFragment {
         adapter.addFragment(new UnDoneFragment(), "Tab 3");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
+
+
 //
 //            tabLayout.getTabAt(0).setIcon(tabIcons[0]);
 //            tabLayout.getTabAt(1).setIcon(tabIcons[1]);
 //            tabLayout.getTabAt(2).setIcon(tabIcons[2]);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            public void onPageScrollStateChanged(int state) {
+                Toast.makeText(MainActivity.this,"reusme",Toast.LENGTH_LONG).show();
 
+            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            public void onPageSelected(int position) {
+                // Check if this is the page you want.
+            }
+        });
+
+
+        viewPager.setOffscreenPageLimit(3);
     }
 
 

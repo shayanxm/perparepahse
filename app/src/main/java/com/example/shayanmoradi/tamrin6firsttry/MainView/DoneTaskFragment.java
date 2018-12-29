@@ -44,9 +44,20 @@ public class DoneTaskFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        updateUI();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         updateUI();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
 
     private void updateUI() {

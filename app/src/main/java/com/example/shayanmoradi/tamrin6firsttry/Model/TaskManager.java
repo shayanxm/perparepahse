@@ -1,27 +1,30 @@
 package com.example.shayanmoradi.tamrin6firsttry.Model;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.UUID;
 
 public class TaskManager {
     private static TaskManager instance;
-    LinkedHashMap<UUID, Task> mTAskMap;
+    ArrayList<Task> mTAskMap;
 
     private TaskManager() {
-        mTAskMap = new LinkedHashMap<>();
-        for (int i = 0; i < 100; i++) {
-            Task task = new Task();
-            task.setTitle("task#" + i);
-            task.setmDoneOrUnDone(i % 2 == 0);
-            task.setmDescription("des" + i);
-
-            mTAskMap.put(task.getmTaskId(), task);
-        }
+        mTAskMap = new ArrayList<>();
+//        for (int i = 0; i < 100; i++) {
+//            Task task = new Task();
+//            task.setTitle("task#" + i);
+//            task.setmDoneOrUnDone(i % 2 == 0);
+//            task.setmDescription("des" + i);
+//
+//            mTAskMap.add( task);
+//        }
 
     }
 
+    public void addTask(Task task){
+        mTAskMap.add(task);
+
+    }
     public static TaskManager getInstance() {
         if (instance == null)
             instance = new TaskManager();
@@ -29,15 +32,18 @@ public class TaskManager {
     }
 
     public List<Task> getTasks() {
-        List<Task> valueList = new ArrayList<>(mTAskMap.values());
+        List<Task> valueList =mTAskMap;
         return valueList;
     }
 
-    public Task getTask(UUID id) {
-        Task task;
-        if (mTAskMap.containsValue(id))
-            return mTAskMap.get(id);
-        return null;
+//    public Task getTask(UUID id) {
+//        Task task;
+//        if (mTAskMap.containsValue(id))
+//            return mTAskMap.get(id);
+//        return null;
+//    }
+    public Task getask(UUID id) {
+        return mTAskMap.get(getIndexOfTask(id));
     }
     public int getIndexOfTask(UUID id ){
         List<Task>task =getTasks();

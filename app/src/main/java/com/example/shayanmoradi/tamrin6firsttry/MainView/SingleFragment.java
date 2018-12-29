@@ -1,9 +1,11 @@
-package com.example.shayanmoradi.tamrin6firsttry;
+package com.example.shayanmoradi.tamrin6firsttry.MainView;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.shayanmoradi.tamrin6firsttry.R;
 
 public abstract class SingleFragment extends AppCompatActivity {
 public abstract Fragment createFragment();
