@@ -8,11 +8,29 @@ public class Task {
     private String Title;
     private String mDescription;
     private Date mDate;
+    private String simpleTime;
+    private String simpleDate;
     private boolean mDoneOrUnDone;
 
     public Task() {
 mTaskId= UUID.randomUUID();
 mDate = new Date();
+    }
+
+    public String getSimpleTime() {
+        return simpleTime;
+    }
+
+    public void setSimpleTime(String simpleTime) {
+        this.simpleTime = simpleTime;
+    }
+
+    public String getSimpleDate() {
+        return simpleDate;
+    }
+
+    public void setSimpleDate(String simpleDate) {
+        this.simpleDate = simpleDate;
     }
 
     public UUID getmTaskId() {

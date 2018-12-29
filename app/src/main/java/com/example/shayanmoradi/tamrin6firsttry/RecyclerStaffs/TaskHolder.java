@@ -14,6 +14,7 @@ import com.example.shayanmoradi.tamrin6firsttry.R;
 public class TaskHolder extends RecyclerView.ViewHolder {
 
     private TextView mTitleTextView;
+    private TextView firstLetter;
    // private TextView mDateTextView;
  //   private ImageView mSolvedImageView;
 
@@ -23,6 +24,7 @@ public class TaskHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         mTitleTextView = itemView.findViewById(R.id.task_title);
+        firstLetter = itemView.findViewById(R.id.first_letter_of_task);
 //        mDateTextView = itemView.findViewById(R.id.list_item_crime_date);
 //        mSolvedImageView = itemView.findViewById(R.id.crime_solved);
 
@@ -42,6 +44,8 @@ public class TaskHolder extends RecyclerView.ViewHolder {
     public void bind(Task crime) {
         mTask = crime;
         mTitleTextView.setText(crime.getTitle());
+        String firstLetterString = crime.getTitle().substring(0,1);
+        firstLetter.setText(firstLetterString);
 //        mDateTextView.setText(crime.getDate().toString());
 //        mSolvedImageView.setVisibility(crime.isSolved() == true ? View.VISIBLE : View.GONE);
     }

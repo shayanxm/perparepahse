@@ -19,8 +19,9 @@
         <activity
             android:name=".DetailView.DetailtaskActivity"
             android:label="@string/title_activity_detailtask"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".getInfromation.GetInfoActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".getInfromation.GetInfoActivity" />
+        <activity android:name="com.example.amin.criminalintent.shit.GetInfoActivityNoId"></activity>
     </application>
 
 </manifest>

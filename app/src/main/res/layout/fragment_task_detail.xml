@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".DetailView.TaskDetailFragment">
 
@@ -12,4 +13,52 @@
         android:layout_height="wrap_content"
         android:text="test"
         android:textSize="30sp" />
-</FrameLayout>
+    <TextView
+        android:id="@+id/detail_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:textSize="30sp" />
+    <TextView
+        android:id="@+id/detail_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:textSize="30sp" />
+    <TextView
+        android:id="@+id/detail_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom|center"
+        android:orientation="horizontal"
+        android:paddingTop="250dp">
+
+        <Button
+            android:id="@+id/edit_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="edit task" />
+
+        <Button
+            android:id="@+id/delete_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="delete task" />
+
+        <Button
+            android:id="@+id/done_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="done" />
+
+
+    </LinearLayout>
+</LinearLayout>

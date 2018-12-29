@@ -20,15 +20,37 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            tools:text="enter @android:string/dialog_alert_title" />
+           android:hint="enter title"
+            />
+        <EditText
+            android:id="@+id/des_geter_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="enter description"
+            />
+
+        <Button
+            android:id="@+id/pick_time_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="pick time!" />
+
+        <Button
+            android:id="@+id/pick_date_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="pick date!" />
 
         <Button
             android:id="@+id/add_task_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="ADD!" />
 
 
     </LinearLayout>

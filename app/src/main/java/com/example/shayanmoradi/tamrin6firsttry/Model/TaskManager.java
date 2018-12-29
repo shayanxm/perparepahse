@@ -25,6 +25,9 @@ public class TaskManager {
         mTAskMap.add(task);
 
     }
+    public void deleteTask(Task task){
+        mTAskMap.remove(task);
+    }
     public static TaskManager getInstance() {
         if (instance == null)
             instance = new TaskManager();
@@ -43,7 +46,9 @@ public class TaskManager {
 //        return null;
 //    }
     public Task getask(UUID id) {
+        if (mTAskMap.get(getIndexOfTask(id))!=null)
         return mTAskMap.get(getIndexOfTask(id));
+        return null;
     }
     public int getIndexOfTask(UUID id ){
         List<Task>task =getTasks();

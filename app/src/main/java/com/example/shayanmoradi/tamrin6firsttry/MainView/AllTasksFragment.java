@@ -41,10 +41,13 @@ public class AllTasksFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.all_tasks_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         FloatingActionButton fab = view.findViewById(R.id.floatingActionButton);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = GetInfoActivity.newIntent(getActivity());
+                Task task = new Task();
+                TaskManager.getInstance().addTask(task);
+                Intent intent = GetInfoActivity.newIntent(getActivity(),task.getmTaskId());
                 startActivity(intent);
                 Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
