@@ -24,6 +24,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
         mTask = tasks;
     }
 
+
     @NonNull
     @Override
     public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,6 +37,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
+
         Task task = mTask.get(position);
         holder.bind(task);
     }

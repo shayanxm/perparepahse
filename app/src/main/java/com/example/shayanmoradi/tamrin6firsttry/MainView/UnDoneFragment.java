@@ -9,12 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.shayanmoradi.tamrin6firsttry.Model.Task;
 import com.example.shayanmoradi.tamrin6firsttry.Model.TaskManager;
 import com.example.shayanmoradi.tamrin6firsttry.R;
 import com.example.shayanmoradi.tamrin6firsttry.RecyclerStaffs.TaskAdapter;
-
-import java.util.List;
 
 
 /**
@@ -38,7 +35,8 @@ public class UnDoneFragment extends Fragment {
 
         mRecyclerView = view.findViewById(R.id.un_done_tasks_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+//        TaskAdapter tasksAdapter = new TaskAdapter(TaskManager.getInstance().getUndoneTasks());
+//        mRecyclerView.setAdapter(tasksAdapter);
 
         return view;
     }
@@ -46,24 +44,26 @@ public class UnDoneFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        updateUI();
+        TaskAdapter tasksAdapter = new TaskAdapter(TaskManager.getInstance().getUndoneTasks());
+        mRecyclerView.setAdapter(tasksAdapter);
+        tasksAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        updateUI();
+        //updateUI();
     }
 
-    private void updateUI() {
-        TaskManager taskManager = TaskManager.getInstance();
-        List<Task> tasks = taskManager.getTasks();
-        if (mTaskAdapter == null) {
-            mTaskAdapter = new TaskAdapter(tasks);
-            mRecyclerView.setAdapter(mTaskAdapter);
-        } else {
-//            mCrimeAdapter.setCrimes(crimes);
-            mTaskAdapter.notifyDataSetChanged();
-        }
-    }
+//    private void updateUI() {
+//        TaskManager taskManager = TaskManager.getInstance();
+//        List<Task> tasks = taskManager.getTasks();
+//        if (mTaskAdapter == null) {
+//            mTaskAdapter = new TaskAdapter(tasks);
+//            mRecyclerView.setAdapter(mTaskAdapter);
+//        } else {
+////            mCrimeAdapter.setCrimes(crimes);
+//            mTaskAdapter.notifyDataSetChanged();
+//        }
+   // }
 }

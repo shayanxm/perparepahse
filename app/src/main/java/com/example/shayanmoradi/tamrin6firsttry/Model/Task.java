@@ -11,6 +11,15 @@ public class Task {
     private String simpleTime;
     private String simpleDate;
     private boolean mDoneOrUnDone;
+    private boolean yesForEditNoForCreate;
+
+    public boolean getYesForEditNoForCreate() {
+        return yesForEditNoForCreate;
+    }
+
+    public void setYesForEditNoForCreate(boolean yesForEditNoForCreate) {
+        this.yesForEditNoForCreate = yesForEditNoForCreate;
+    }
 
     public Task() {
 mTaskId= UUID.randomUUID();
@@ -65,7 +74,7 @@ mDate = new Date();
         this.mDate = mDate;
     }
 
-    public boolean ismDoneOrUnDone() {
+    public boolean getmDoneOrUnDone() {
         return mDoneOrUnDone;
     }
 

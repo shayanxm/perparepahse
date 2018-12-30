@@ -45,6 +45,13 @@
             android:layout_weight="1"
             android:text="pick date!" />
 
+        <CheckBox
+            android:id="@+id/done_or_undone_check_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="is it done?" />
+
         <Button
             android:id="@+id/add_task_btn"
             android:layout_width="wrap_content"

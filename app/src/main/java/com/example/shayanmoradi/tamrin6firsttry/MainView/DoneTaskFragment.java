@@ -9,12 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.shayanmoradi.tamrin6firsttry.Model.Task;
 import com.example.shayanmoradi.tamrin6firsttry.Model.TaskManager;
 import com.example.shayanmoradi.tamrin6firsttry.R;
 import com.example.shayanmoradi.tamrin6firsttry.RecyclerStaffs.TaskAdapter;
-
-import java.util.List;
 
 
 /**
@@ -34,10 +31,11 @@ public class DoneTaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_done_task, container, false);
+        View view = inflater.inflate(R.layout.fragment_done_task, container, false);
         mRecyclerView = view.findViewById(R.id.done_tasks_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+//        TaskAdapter tasksAdapter = new TaskAdapter(TaskManager.getInstance().getDoneTasks());
+//        mRecyclerView.setAdapter(tasksAdapter);
 
         return view;
 
@@ -46,8 +44,8 @@ public class DoneTaskFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        updateUI();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        // updateUI();
+        //  mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
     }
@@ -55,20 +53,23 @@ public class DoneTaskFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        updateUI();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        TaskAdapter tasksAdapter = new TaskAdapter(TaskManager.getInstance().getDoneTasks());
+        mRecyclerView.setAdapter(tasksAdapter);
+        tasksAdapter.notifyDataSetChanged();
+        // updateUI();
+        //  mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
     }
-
-    private void updateUI() {
-        TaskManager taskManager = TaskManager.getInstance();
-        List<Task> tasks = taskManager.getTasks();
-        if (mTaskAdapter == null) {
-            mTaskAdapter = new TaskAdapter(tasks);
-            mRecyclerView.setAdapter(mTaskAdapter);
-        } else {
-//            mCrimeAdapter.setCrimes(crimes);
-            mTaskAdapter.notifyDataSetChanged();
-        }
-    }
+//
+//    private void updateUI() {
+//        TaskManager taskManager = TaskManager.getInstance();
+//        List<Task> tasks = taskManager.getDoneTasks();
+//        if (mTaskAdapter == null) {
+//            mTaskAdapter = new TaskAdapter(tasks);
+//            mRecyclerView.setAdapter(mTaskAdapter);
+//        } else {
+////            mCrimeAdapter.setCrimes(crimes);
+//            mTaskAdapter.notifyDataSetChanged();
+//        }
+//    }
 }

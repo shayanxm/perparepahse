@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.widget.Toast;
 
 import com.example.shayanmoradi.tamrin6firsttry.R;
 
@@ -30,9 +29,9 @@ public class MainActivity extends SingleFragment {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         adapter = new TabAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AllTasksFragment(), "Tab 1");
-        adapter.addFragment(new DoneTaskFragment(), "Tab 2");
-        adapter.addFragment(new UnDoneFragment(), "Tab 3");
+        adapter.addFragment(new AllTasksFragment(), "All tasks");
+        adapter.addFragment(new AllTasksFragment(), "Done Tasks");
+        adapter.addFragment(new AllTasksFragment(), "un Done Task ");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
@@ -44,7 +43,7 @@ public class MainActivity extends SingleFragment {
 //            tabLayout.getTabAt(2).setIcon(tabIcons[2]);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             public void onPageScrollStateChanged(int state) {
-                Toast.makeText(MainActivity.this,"reusme",Toast.LENGTH_LONG).show();
+             //   Toast.makeText(MainActivity.this,"reusme",Toast.LENGTH_LONG).show();
 
             }
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}

@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.shayanmoradi.tamrin6firsttry.DetailView.DetailtaskActivity;
 import com.example.shayanmoradi.tamrin6firsttry.Model.Task;
@@ -15,8 +14,6 @@ public class TaskHolder extends RecyclerView.ViewHolder {
 
     private TextView mTitleTextView;
     private TextView firstLetter;
-   // private TextView mDateTextView;
- //   private ImageView mSolvedImageView;
 
     private Task mTask;
 
@@ -25,16 +22,14 @@ public class TaskHolder extends RecyclerView.ViewHolder {
 
         mTitleTextView = itemView.findViewById(R.id.task_title);
         firstLetter = itemView.findViewById(R.id.first_letter_of_task);
-//        mDateTextView = itemView.findViewById(R.id.list_item_crime_date);
-//        mSolvedImageView = itemView.findViewById(R.id.crime_solved);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  Toast.makeText(itemView.getContext(), mTask.getTitle() + " clicked!", Toast.LENGTH_LONG).show();
-         //      for task click
 
+                //      for task click
 
+                mTask.setYesForEditNoForCreate(false);
                 Intent intent = DetailtaskActivity.newIntent(itemView.getContext(), mTask.getmTaskId());
                 itemView.getContext().startActivity(intent);
             }
@@ -44,9 +39,31 @@ public class TaskHolder extends RecyclerView.ViewHolder {
     public void bind(Task crime) {
         mTask = crime;
         mTitleTextView.setText(crime.getTitle());
-        String firstLetterString = crime.getTitle().substring(0,1);
+        String firstLetterString = crime.getTitle().substring(0, 1);
         firstLetter.setText(firstLetterString);
 //        mDateTextView.setText(crime.getDate().toString());
 //        mSolvedImageView.setVisibility(crime.isSolved() == true ? View.VISIBLE : View.GONE);
     }
+//
+//    public void bindDone(Task crime) {
+//        mTask = crime;
+//        if (mTask.getmDoneOrUnDone() == true) {
+//            mTitleTextView.setText(crime.getTitle());
+//            String firstLetterString = crime.getTitle().substring(0, 1);
+//            firstLetter.setText(firstLetterString);
+//        }
+////        mDateTextView.setText(crime.getDate().toString());
+////        mSolvedImageView.setVisibility(crime.isSolved() == true ? View.VISIBLE : View.GONE);
+//    }
+//
+//    public void bindUnDone(Task crime) {
+//        mTask = crime;
+//        if (mTask.getmDoneOrUnDone() == false) {
+//            mTitleTextView.setText(crime.getTitle());
+//            String firstLetterString = crime.getTitle().substring(0, 1);
+//            firstLetter.setText(firstLetterString);
+//        }
+////        mDateTextView.setText(crime.getDate().toString());
+////        mSolvedImageView.setVisibility(crime.isSolved() == true ? View.VISIBLE : View.GONE);
+//    }
 }

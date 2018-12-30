@@ -25,6 +25,17 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class AllTasksFragment extends Fragment {
+    private static final String TAB_TYPE = "tab_type";
+    private List<Task> mTasks;
+    public static AllTasksFragment newInstance(int tabType) {
+
+        Bundle args = new Bundle();
+        args.putInt(TAB_TYPE,tabType);
+        AllTasksFragment fragment = new AllTasksFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     private RecyclerView mRecyclerView;
     private TaskAdapter mTaskAdapter;
 
@@ -40,13 +51,15 @@ public class AllTasksFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragmen_all_tasks, container, false);
         mRecyclerView = view.findViewById(R.id.all_tasks_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        TaskAdapter tasksAdapter = new TaskAdapter(TaskManager.getInstance().getAllTasks());
+        mRecyclerView.setAdapter(tasksAdapter);
         FloatingActionButton fab = view.findViewById(R.id.floatingActionButton);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Task task = new Task();
-                TaskManager.getInstance().addTask(task);
+                TaskManager.getInstance().addTask(task,0);
                 Intent intent = GetInfoActivity.newIntent(getActivity(),task.getmTaskId());
                 startActivity(intent);
                 Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
@@ -69,7 +82,23 @@ public class AllTasksFragment extends Fragment {
 //        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 //
 //        updateUI();
-        super.onResume();
+super.onResume();
+        int tabType = getArguments().getInt(TAB_TYPE);
+        TaskManager taskLab = TaskManager.getInstance();
+        switch (tabType){
+            case 0:
+                mTasks = taskLab.getAllTasks();
+                break;
+            case 1:
+                mTasks = taskLab.getDoneTasks();
+                break;
+            case 2:
+                mTasks = taskLab.getUndoneTasks();
+                break;
+        }
+        TaskAdapter tasksAdapter = new TaskAdapter(mTasks);
+        mRecyclerView.setAdapter(tasksAdapter);
+
     }
 
     private void updateUI() {

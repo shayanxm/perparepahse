@@ -24,7 +24,7 @@ import java.util.UUID;
  */
 public class TaskDetailFragment extends Fragment {
     private TextView title;
-    public  Task task;
+    public Task task;
     private TextView descTxt;
     private TextView timeTxt;
     private TextView dateTxt;
@@ -54,46 +54,53 @@ public class TaskDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task_detail, container, false);
 
-    final UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
-    title= view.findViewById(R.id.detail_title);
-    delteBtn= view.findViewById(R.id.delete_task);
-    editBtn= view.findViewById(R.id.edit_task);
-    doneBtn = view.findViewById(R.id.done_task);
-    descTxt= view.findViewById(R.id.detail_des);
-    timeTxt=view.findViewById(R.id.detail_time);
-    dateTxt=view.findViewById(R.id.detail_date);
+        final UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
+        title = view.findViewById(R.id.detail_title);
+        delteBtn = view.findViewById(R.id.delete_task);
+        editBtn = view.findViewById(R.id.edit_task);
+        doneBtn = view.findViewById(R.id.done_task);
+        descTxt = view.findViewById(R.id.detail_des);
+        timeTxt = view.findViewById(R.id.detail_time);
+        dateTxt = view.findViewById(R.id.detail_date);
 
-       task=TaskManager.getInstance().getask(crimeId);
+        task = TaskManager.getInstance().getask(crimeId);
 
-    title.setText(task.getTitle()+"");
-    descTxt.setText(task.getmDescription());
-    timeTxt.setText(task.getSimpleTime()+"");
-    dateTxt.setText(task.getSimpleDate());
-    delteBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            TaskManager.getInstance().deleteTask(task);
-        }
-    });
-    editBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+        title.setText(task.getTitle() + "");
+        descTxt.setText(task.getmDescription());
+        timeTxt.setText(task.getSimpleTime() + "");
+        dateTxt.setText(task.getSimpleDate());
+        delteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TaskManager.getInstance().deleteTask(task);
+            }
+        });
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
-
-           startActivity( GetInfoActivity.newIntent(getActivity(),crimeId));
+                task.setYesForEditNoForCreate(true);
+                startActivity(GetInfoActivity.newIntent(getActivity(), crimeId));
 //            TaskManager.getInstance().deleteTask(task);
 
 
-        }
-    });
-    doneBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getActivity(),MainActivity.class);
-            startActivity(intent);
-        }
-    });
+            }
+        });
+        doneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (task.getmDoneOrUnDone()!=true) {
+                    task.setmDoneOrUnDone(true);
+                    TaskManager.getInstance().addTask(task, 1);
+                    TaskManager.getInstance().deleteTaskUNDone(task);
+                    TaskManager.getInstance().deleteTaskUNDone(task);
+
+                }
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
